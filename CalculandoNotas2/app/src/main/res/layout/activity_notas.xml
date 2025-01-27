@@ -1,0 +1,99 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotasActivity">
+
+    <!-- Nombre del Estudiante -->
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nombre del Estudiante"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:importantForAutofill="no" />
+
+    <!-- Nota mínima para aprobar -->
+    <EditText
+        android:id="@+id/etNotaMinima"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Nota mínima para aprobar"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etNombre"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"
+        android:importantForAutofill="no" />
+
+    <!-- Notas del cómputo 1 -->
+    <TextView
+        android:id="@+id/etiquetaNota1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nota Cómputo 1"
+        app:layout_constraintTop_toBottomOf="@id/etNotaMinima"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/nota1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese nota cómputo 1"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etiquetaNota1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Notas del cómputo 2 -->
+    <TextView
+        android:id="@+id/etiquetaNota2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nota Cómputo 2"
+        app:layout_constraintTop_toBottomOf="@id/nota1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/nota2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese nota cómputo 2"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etiquetaNota2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Notas del cómputo 3 -->
+    <TextView
+        android:id="@+id/etiquetaNota3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nota Cómputo 3"
+        app:layout_constraintTop_toBottomOf="@id/nota2"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/nota3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Ingrese nota cómputo 3"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/etiquetaNota3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Botón Calcular -->
+    <Button
+        android:id="@+id/calcularButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calcular"
+        app:layout_constraintTop_toBottomOf="@id/nota3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
