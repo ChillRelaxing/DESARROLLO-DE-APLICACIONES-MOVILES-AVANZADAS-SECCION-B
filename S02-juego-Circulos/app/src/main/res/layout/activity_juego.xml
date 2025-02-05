@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:padding="8dp">
+
+    <com.google.android.material.card.MaterialCardView
+    android:id="@+id/headerCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    app:cardBackgroundColor="@color/primary_color"
+    app:cardCornerRadius="0dp"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <TextView
+    android:id="@+id/headerText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:text="Juego de Círculos"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textSize="26sp"
+    android:textStyle="bold"
+    android:fontFamily="sans-serif-condensed"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+    android:id="@+id/levelText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:background="@drawable/rounded_level_bg"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="8dp"
+    android:text="Nivel 1"
+    android:textColor="@color/white"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/headerCard"/>
+
+    <com.google.android.material.card.MaterialCardView
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:layout_marginTop="24dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="6dp"
+    app:layout_constraintBottom_toTopOf="@id/footerText"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/levelText">
+
+    <GridLayout
+    android:id="@+id/gridLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="3"
+    android:rowCount="4"
+    android:padding="12dp"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+    android:id="@+id/footerText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/primary_color"
+    android:padding="12dp"
+    android:text="© 2025 Todos los derechos reservados"
+    android:textAlignment="center"
+    android:textColor="@color/white"
+    android:textSize="12sp"
+    app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
