@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/background_gradient"
+    tools:context=".LuminosidadActivity">
+
+    <!-- CardView para el contenido -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+<!-- TextView para el valor de luminosidad -->
+    <TextView
+        android:id="@+id/txtLuminosidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Valor de Luminosidad: "
+        android:textSize="24sp"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4"
+        android:layout_marginBottom="20dp" />
+
+<!-- TextView para mostrar el valor numérico -->
+    <TextView
+        android:id="@+id/txtValorLuminosidad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLuminosidad"
+        android:text="0 LUX"
+        android:textSize="28sp"
+        android:textColor="#FF6200EE"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="4" />
+
+        <Button
+            android:id="@+id/btnEnviarResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtValorLuminosidad"
+            android:layout_marginTop="20dp"
+            android:text="Enviar Resultado"
+            android:background="@drawable/button_background"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:padding="15dp"
+            android:elevation="8dp"
+            android:stateListAnimator="@null" />
+
+    </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
