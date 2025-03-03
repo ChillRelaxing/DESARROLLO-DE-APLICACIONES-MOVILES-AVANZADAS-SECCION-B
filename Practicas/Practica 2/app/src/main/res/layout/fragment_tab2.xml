@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F4F6"
+    android:padding="16dp"
+    tools:context=".Tab1Fragment">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@drawable/rounded_background"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Contenido de la pestaña 2"
+        android:textColor="#2D3748"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-condensed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.8" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
