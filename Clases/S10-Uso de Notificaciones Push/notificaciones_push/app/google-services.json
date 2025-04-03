@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "745448248124",
+    "project_id": "notificacionesremotas-9340f",
+    "storage_bucket": "notificacionesremotas-9340f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745448248124:android:9cb7c52ef2a5adfd0e0439",
+        "android_client_info": {
+          "package_name": "net.leo.notificaciones_push"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbNu5aNy5PYDKe3zVsgL7rdD70myQfU8I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

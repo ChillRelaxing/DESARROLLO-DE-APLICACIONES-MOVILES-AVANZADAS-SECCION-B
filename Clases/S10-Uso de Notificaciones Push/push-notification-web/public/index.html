@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Envío de Notificaciones Push</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background-color: #3F51B5;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .content {
+            padding: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .error {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        button {
+            background-color: #9C27B0;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #7B1FA2;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .success-message {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        .error-message {
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+        .footer {
+            text-align: center;
+            color: #757575;
+            font-size: 12px;
+            margin-top: 30px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #09f;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            Envío de Notificaciones Push
+        </div>
+        <div class="content">
+            <div class="form-group">
+                <label for="subject">Asunto</label>
+                <input type="text" id="subject" placeholder="Ingrese el asunto de la notificación">
+                <div class="error" id="subject-error">El asunto es obligatorio</div>
+            </div>
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" placeholder="Ingrese el contenido del mensaje"></textarea>
+                <div class="error" id="message-error">El mensaje es obligatorio</div>
+            </div>
+            <button id="send-btn">ENVIAR NOTIFICACIÓN</button>
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Enviando notificación...</p>
+            </div>
+            <div class="success-message" id="success-message">
+                Notificación enviada exitosamente a todos los dispositivos
+            </div>
+            <div class="error-message" id="error-message">
+                Error al enviar la notificación
+            </div>
+            <div class="logo">
+                <img src="firebase-logo.png" alt="Firebase Logo" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cGF0aCBmaWxsPSIjZmZjMTA3IiBkPSJNMjAgODBMNTAgMTAgODAgOTBIMjB6Ii8+PHBhdGggZmlsbD0iI2Y1NzEyMCIgZD0iTTUwIDEwTDIwIDgwIDAgNDBaIi8+PHBhdGggZmlsbD0iI2ZmY2E0MCIgZD0iTTUwIDEwTDgwIDQwIDYwIDB6Ii8+PHBhdGggZmlsbD0iI2JmMzYwYyIgZD0iTTUwIDkwTDIwIDgwIDgwIDgweiIvPjwvc3ZnPg=='">
+            </div>
+            <div class="footer">
+                © 2025 Notificaciones Push - Todos los derechos reservados
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Referencias a elementos del DOM
+        const sendBtn = document.getElementById('send-btn');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+        const subjectError = document.getElementById('subject-error');
+        const messageError = document.getElementById('message-error');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const loading = document.getElementById('loading');
+
+        // URL del servidor (ajustar según tu configuración)
+        const serverUrl = 'http://localhost:3000/send-notification';
+
+        // Función para validar el formulario
+        function validateForm() {
+            let isValid = true;
+
+            if (subjectInput.value.trim() === '') {
+                subjectError.style.display = 'block';
+                isValid = false;
+            } else {
+                subjectError.style.display = 'none';
+            }
+
+            if (messageInput.value.trim() === '') {
+                messageError.style.display = 'block';
+                isValid = false;
+            } else {
+                messageError.style.display = 'none';
+            }
+
+            return isValid;
+        }
+
+        // Función para ocultar todos los mensajes
+        function hideMessages() {
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            loading.style.display = 'none';
+        }
+
+        // Función para enviar la notificación
+        async function sendNotification() {
+            if (!validateForm()) {
+                return;
+            }
+
+            // Mostrar cargando y deshabilitar botón
+            loading.style.display = 'block';
+            sendBtn.disabled = true;
+            hideMessages();
+
+            try {
+                const response = await fetch(serverUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        subject: subjectInput.value.trim(),
+                        message: messageInput.value.trim()
+                    })
+                });
+
+                // Ocultar cargando
+                loading.style.display = 'none';
+
+                if (response.ok) {
+                    // Mostrar mensaje de éxito
+                    successMessage.style.display = 'block';
+                    
+                    // Limpiar campos
+                    subjectInput.value = '';
+                    messageInput.value = '';
+                    
+                    // Ocultar mensaje después de 5 segundos
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                } else {
+                    const errorData = await response.json();
+                    console.error('Error:', errorData);
+                    errorMessage.textContent = 'Error al enviar la notificación: ' + 
+                        (errorData.error || response.statusText);
+                    errorMessage.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                loading.style.display = 'none';
+                errorMessage.textContent = 'Error al enviar la notificación: ' + error.message;
+                errorMessage.style.display = 'block';
+            } finally {
+                // Re-habilitar botón
+                sendBtn.disabled = false;
+            }
+        }
+
+        // Agregar evento click al botón
+        sendBtn.addEventListener('click', sendNotification);
+
+        // Validar al escribir
+        subjectInput.addEventListener('input', () => {
+            if (subjectInput.value.trim() !== '') {
+                subjectError.style.display = 'none';
+            }
+        });
+
+        messageInput.addEventListener('input', () => {
+            if (messageInput.value.trim() !== '') {
+                messageError.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
